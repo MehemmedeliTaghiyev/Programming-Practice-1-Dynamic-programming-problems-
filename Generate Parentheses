@@ -1,0 +1,26 @@
+class Solution {
+    vector<string>result;
+public:
+    vector<string> generateParenthesis(int n) {
+        
+        backtracking("", 0, 0, n);
+        return result;
+
+    }
+
+    void backtracking(string currString, int open, int close, int n) {
+        if (open == n && close == n) {
+            result.push_back(currString);
+            return;
+        }
+
+        if (open < n) {
+            backtracking(currString + "(", open + 1, close, n);
+        }
+
+        if (close < open) {
+            backtracking(currString + ")", open, close + 1, n);
+        }
+    }
+
+};
